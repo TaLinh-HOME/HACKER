@@ -1,0 +1,47 @@
+{
+  "name": "chat-app",
+  "description": "Real-time client/server communication over UDP using WebRTC and Node.js",
+  "version": "2.3.1",
+  "main": "dist",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "npm-run-all --parallel watch:* dev:*",
+    "dev:tsc": "tsc --watch",
+    "dev:webpack": "webpack --config webpack/webpack.client.cjs --watch",
+    "dev:nodemon": "nodemon --watch ../ -e js --delay 250ms lib/server.js ",
+    "watch:common": "tsc --build --watch ../common/tsconfig.json",
+    "watch:client": "tsc --build --watch ../client/tsconfig.json",
+    "watch:server": "tsc --build --watch ../server/tsconfig.json"
+  },
+  "keywords": [
+    "realtime",
+    "framework",
+    "webrtc",
+    "nodejs",
+    "udp",
+    "sctp",
+    "events",
+    "io"
+  ],
+  "author": "Yannick Deubel (https://github.com/yandeu)",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/geckosio/geckos.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/geckosio/geckos.io/issues"
+  },
+  "homepage": "http://geckos.io",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "@geckos.io/client": "^2.3.1",
+    "@geckos.io/server": "^2.3.1"
+  },
+  "funding": {
+    "url": "https://github.com/sponsors/yandeu"
+  }
+}

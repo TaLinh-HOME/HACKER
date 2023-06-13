@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/.tmp/geckos.io-client.latest.min.js"></script>
+  </head>
+  <body>
+    <script>
+      'use strict'
+
+      var channel = geckos({ port: 5400 })
+
+      channel.onConnect(error => {
+        if (error) {
+          console.error(error.message)
+          return
+        }
+
+        channel.on('reliable-message', data => {
+          if (data === 'hello')
+            channel.emit('reliable-message', 'hello back', {
+              reliable: true
+            })
+        })
+
+        channel.on('reliable-message-room', data => {
+          if (data === 'hello room')
+            channel.emit('reliable-message-room', 'hello room back', {
+              reliable: true
+            })
+        })
+
+        channel.on('reliable-message-global', data => {
+          if (data === 'hello global')
+            channel.emit('reliable-message-global', 'hello global back', {
+              reliable: true
+            })
+        })
+      })
+    </script>
+  </body>
+</html>
